@@ -60,54 +60,26 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
-  seasons_array = []
-  final_seasons_array = []
-  holiday_array = []
-  x = holiday_array.length
-  
+ seasons_array = [ ]
+ final_seasons_array = [ ]
+ holiday_string = " "
+ 
   holiday_hash.each do |season|
-    seasons_array << season[0].to_s.scan(/[a-z]/)
-  end
-  
-  holiday_hash.values.each do |season|
+    puts "#{season[0].to_s.scan(/[a-z]/).join.capitalize}:"
     season.each do |holiday|
-      holiday.each do |item|
-        holiday_array << item
+      holiday_hash[holiday].each do |day|
+        if day.to_s.include?("_")
+          capitalized_holiday = day[0].to_s.split
+          capitalized_holiday.map do |word|
+            word.capitalize
+            final_holiday = capitalized_holiday.join
+            puts "#{capitalized_holiday}: #{day[1].join(", ")}"
+          end
+        elsif day.to_s.include?("_") == false
+          #holiday_string = "#{day[0].to_s.scan(/[a-z]/).join.capitalize}"
+          puts "  #{day[0].to_s.scan(/[a-z]/).join.capitalize}: #{day[1].join(", ")}"
+        end
       end
     end
-  
-  seasons_array.each do |item|
-    final_seasons_array << item.join.capitalize
   end
-  
-  #binding.pry
-  
-  while x > 0 
-    puts "#{final_seasons_array[x]}\n"
-    puts "  #{holiday_array[x]}: #{holiday_array[x+1]}\n"
-    x -= 1
 end
-end
-end
-  
-  
-  
-  # iterate through holiday_hash and print items such that your readout resembles:
-  # Winter:
-  #   Christmas: Lights, Wreath
-  #   New Years: Party Hats
-  # Summer:
-  #   Fourth Of July: Fireworks, BBQ
-  # etc.
-  
-  
-  #puts "season"
-  #puts "  #{holiday_1}: #{supply_array_1}"
-  #puts "  #{holiday_2}: #{supply_array_2}
-
-#def all_holidays_with_bbq(holiday_hash)
-  # return an array of holiday names (as symbols) where supply lists
-  # include the string "BBQ"
-
-#end
-#end
