@@ -62,9 +62,8 @@ end
 def all_supplies_in_holidays(holiday_hash)
   seasons_array = []
   final_seasons_array = []
-  
   holiday_array = []
-  #binding.pry
+  x = holiday_array.length
   
   holiday_hash.each do |season|
     seasons_array << season[0].to_s.scan(/[a-z]/)
@@ -81,15 +80,13 @@ def all_supplies_in_holidays(holiday_hash)
     final_seasons_array << item.join.capitalize
   end
   
-  #puts "#{final_seasons_array[0]}:"
-  #puts holiday_array
+  #binding.pry
   
-  #while x < final_seasons_array.length
-  puts "#{final_seasons_array[0]}:"
-  puts "  #{holiday_array[0]}: #{holiday_array[0]}"
-  
-  
-  
+  while x > 0 
+    puts "#{final_seasons_array[x]}\n"
+    puts "  #{holiday_array[x]}: #{holiday_array[x+1]}\n"
+    x -= 1
+end
 end
 end
   
