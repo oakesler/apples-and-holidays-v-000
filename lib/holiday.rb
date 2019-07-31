@@ -60,26 +60,28 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
+ stringed_holiday = [ ]
  seasons_array = [ ]
  final_seasons_array = [ ]
- holiday_string = " "
+ holiday_string = [ ]
  
-  holiday_hash.each do |season|
-    puts "#{season[0].to_s.scan(/[a-z]/).join.capitalize}:"
-    season.each do |holiday|
-      holiday_hash[holiday].each do |day|
-        if day.to_s.include?("_")
-          capitalized_holiday = day[0].to_s.split
-          capitalized_holiday.map do |word|
-            word.capitalize
-            final_holiday = capitalized_holiday.join
-            puts "#{capitalized_holiday}: #{day[1].join(", ")}"
-          end
-        elsif day.to_s.include?("_") == false
-          #holiday_string = "#{day[0].to_s.scan(/[a-z]/).join.capitalize}"
-          puts "  #{day[0].to_s.scan(/[a-z]/).join.capitalize}: #{day[1].join(", ")}"
-        end
-      end
+  holiday_hash.each do |season, holidays|
+      puts "#{season.to_s.scan(/[a-z]/).join.capitalize}:"
+    holidays.each do |name, supplies|
+      stringed_holiday = name.to_s.gsub("_", " ").split
+      final_holiday = stringed_holiday.map { |x| x.capitalize}
+      binding.pry
     end
   end
 end
+
+
+#puts"#{day[0].to_s.scan(/[a-z]/).join.capitalize}: #{day[1].join(", ")}"
+    
+          #holiday_string = "#{day[0].to_s.scan(/[a-z]/).join.capitalize}"
+            #final_holiday = capitalized_holiday.join
+            #puts "#{capitalized_holiday}: #{day[1].join(", ")}"
+          #end
+        #elsif day[0].to_s.include?("_") == false
+          #holiday_string = "#{day[0].to_s.scan(/[a-z]/).join.capitalize}"
+          #puts "  #{day[0].to_s.scan(/[a-z]/).join.capitalize}: #{day[1].join(", ")}"
