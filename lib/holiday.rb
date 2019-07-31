@@ -82,6 +82,7 @@ def all_holidays_with_bbq(holiday_hash)
     holiday.each do |day, item|
       if item.include?("BBQ")
         holiday_array << day
+      end
     end
   end
 end
